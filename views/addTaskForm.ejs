@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TO DO APP</title>
+    <link rel="stylesheet" href="/addTaskForm.css" />
+    <link
+      rel="stylesheet"
+      href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+    />
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="module" src="/script_addTaskForm.js" defer></script>
+  </head>
+  <body>
+    <div class="container">
+      <form
+        id="taskForm"
+        action="/dashboard"
+        method="POST"
+        onsubmit="return validateForm()"
+      >
+        <label for="title">TITLE:</label>
+        <input type="text" name="title" class="title" required />
+
+        <label for="startDate">START DATE:</label>
+        <input type="text" id="startDate" name="startDate" required />
+
+        <label for="deadline">DEADLINE:</label>
+        <input type="text" id="deadline" name="deadline" required />
+
+        <label for="priority">PRIORITY:</label>
+        <select name="priority" required>
+          <option value="low">Low</option>
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
+        </select>
+
+        <label for="progress">PROGRESS:</label>
+        <select name="progress" required>
+          <option value="open">Open</option>
+          <option value="inprogress">In Progress</option>
+          <option value="complete">Complete</option>
+        </select>
+
+        <label for="description">DESCRIPTION:</label>
+        <textarea type="text" name="description"></textarea>
+        <div id="error-message" class="error-message"></div>
+        <br />
+        <button type="submit">ADD TASK</button>
+      </form>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TO DO APP</title>
+    <link rel="stylesheet" href="/signup.css" />
+    <script src="/script1.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <img
+        src="/images/formImage.png"
+        alt="formImage"
+        class="background-image"
+      />
+      <form
+        action="/api/user/register"
+        method="POST"
+        onsubmit="return validateForm()"
+      >
+        <label for="firstname">First Name:</label>
+        <input type="text" id="firstname" name="firstname" required />
+
+        <label for="lastname">Last Name:</label>
+        <input type="text" id="lastname" name="lastname" />
+
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" required />
+
+        <label for="mobile">Mobile:</label>
+        <input type="text" id="mobile" name="mobile" required />
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required /> <br />
+
+        <div
+          class="error-message"
+          id="error-message"
+          class="error-message"
+        ></div>
+        <br />
+
+        <button type="submit">sing up</button>
+
+        <p class="login-link">
+          Already have an account? <a href="/login">Login</a>
+        </p>
+      </form>
+    </div>
+  </body>
+</html>

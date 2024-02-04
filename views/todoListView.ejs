@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TO DO APP</title>
+    <link rel="stylesheet" href="/todoListView.css" />
+    <script type="module" src="/script_todoListView.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="button-container">
+        <button onclick="redirectToTaskForm(event);">ADD TASK</button>
+      </div>
+      <table id="taskTable">
+        <thead>
+          <tr>
+            <th>TITLE</th>
+            <th>START DATE</th>
+            <th>DEADLINE</th>
+            <th>PRIORITY</th>
+            <th>PROGRESS</th>
+            <th>EDIT</th>
+            <th>DELETE</th>
+          </tr>
+        </thead>
+        <tbody id="taskTableBody">
+          <% if (tasks.length > 0) { %> <% tasks.forEach(task => { %>
+          <tr class="task-row">
+            <td><%= task.title %></td>
+            <td><%= task.startDate %></td>
+            <td><%= task.deadline %></td>
+            <td><%= task.priority %></td>
+            <td><%= task.progress %></td>
+            <td>
+              <button
+                type="button"
+                class="edit-button"
+                id="editButton_<%= task._id %>"
+                onclick="editTask('<%= task._id %>', '<%= task.progress %>')"
+              >
+                Edit
+              </button>
+            </td>
+            <td>
+              <button
+                onclick="deleteTask('<%= task._id %>'); event.preventDefault();"
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+          <% }); %> <% } else { %>
+          <tr id="noDataRow">
+            <td colspan="7">No data found!</td>
+          </tr>
+          <% } %>
+        </tbody>
+      </table>
+      <div id="pagination">
+        <a href="javascript:previous();">Prev</a>
+        <span id="page_navigation"></span>
+        <a href="javascript:next();">Next</a>
+      </div>
+    </div>
+  </body>
+</html>

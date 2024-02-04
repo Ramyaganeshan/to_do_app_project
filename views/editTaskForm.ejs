@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TO DO APP</title>
+    <link rel="stylesheet" href="/addTaskForm.css" />
+    <link
+    rel="stylesheet"
+    href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+  />
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script type="module" src="/script_editTaskForm.js" defer></script>
+
+
+  </head>
+  <body>
+    <div class="container">
+      <form
+        action="/updateTask/<%= task._id %>"
+        method="POST"
+        id="editTaskForm"
+        onsubmit="return validateForm()"
+      >
+        <label for="title">TITLE:</label>
+        <input type="text" name="title" value="<%= task.title %>" required />
+
+        <label for="startDate">START DATE:</label>
+        <input
+          type="text"
+          name="startDate"
+          id="startDate"
+          value="<%= task.startDate %>"
+          required
+        />
+
+        <label for="deadline">DEADLINE:</label>
+        <input
+          type="text"
+          name="deadline"
+          id="deadline"
+          value="<%= task.deadline %>"
+          required
+        />
+        <label for="priority">PRIORITY:</label>
+        <select name="priority" required>
+          <option value="low" <%= task.priority === 'low' ? 'selected' : '' %>>Low</option>
+          <option value="medium" <%= task.priority === 'medium' ? 'selected' : '' %>>Medium</option>
+          <option value="high" <%= task.priority === 'high' ? 'selected' : '' %>>High</option>
+        </select>
+        <label for="progress">PROGRESS:</label>
+        <select name="progress" required>
+          <option value="open" <%= task.progress === 'open' ? 'selected' : '' %>>Open</option>
+          <option value="inprogress" <%= task.progress === 'inprogress' ? 'selected' : '' %>>In Progress</option>
+          <option value="complete" <%= task.progress === 'complete' ? 'selected' : '' %>>Complete</option>
+        </select>
+        <label for="description">DESCRIPTION:</label>
+        <textarea name="description" required><%= task.description %></textarea>
+        <div id="error-message" class="error-message"></div>
+        <br />
+        <button type="submit">UPDATE TASK</button>
+      </form>
+    </div>
+  </body>
+</html>

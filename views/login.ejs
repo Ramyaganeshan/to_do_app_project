@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TO DO APP</title>
+    <link rel="stylesheet" href="/login.css" />
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
+    <script src="/script2.js"></script>
+  </head>
+  <body>
+    <% if (locals.errorMessage) { %>
+    <div class="error-message"><%= locals.errorMessage %></div>
+    <% } %>
+    <div class="container">
+      <img
+        src="/images/formImage.png"
+        alt="formImage"
+        class="background-image"
+      />
+      <form
+        action="/api/user/login"
+        method="POST"
+        onsubmit="return validateLoginForm()"
+      >
+        <label>Email:</label>
+        <input type="text" id="email" name="email" required />
+
+        <label>Password:</label>
+        <input type="password" id="password" name="password" required /> <br />
+
+        <div id="error-message" class="error-message"></div>
+        <br />
+
+        <button type="submit">Sign In</button>
+
+        <p class="signup-link">
+          Don't have an account? <a class="link" href="/signup">signup</a>
+        </p>
+      </form>
+    </div>
+  </body>
+</html>
